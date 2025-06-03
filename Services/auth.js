@@ -32,7 +32,7 @@ const sendOtp = async (payload) => {
 
 const login = async (payload)=>{
     try {
-        const response = await axios.post(`${API_BASE_URL}/api/auth/login`, payload, {
+        const response = await axios.post(`${API_BASE_URL}api/auth/login`, payload, {
             headers: {
                 'Content-Type': 'application/json'
             }
