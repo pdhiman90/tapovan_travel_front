@@ -8,6 +8,7 @@ import Home from './components/Home'
 import TempleCard from './components/TempleCard'
 import BookingCard from './components/BookingCard'
 import Footer from './components/Footer'
+import ContactUs from './components/ContactUs';
 function App() {
   const token = localStorage.getItem("token")
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
          <Route path="/bookingcard" element={<BookingCard />} />
          <Route path="/Home" element={<Home />} />
+         <Route path='/contact' element={<ContactUs/>}/>
+
       </Routes>
         
       

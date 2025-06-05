@@ -195,7 +195,7 @@
 
 import React, { useState, useContext } from 'react';
 import auth from '../../Services/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext'; // ✅ Import context
 
 function Login() {
@@ -307,6 +307,21 @@ function Login() {
               'Login'
             )}
           </button>
+          <div className="flex justify-center items-center mt-2">
+          <p className="text-sm">
+            Don't have an account?{' '}
+            <Link to="/signup" className="text-blue-500 hover:underline">
+              Sign Up
+            </Link>
+          </p>
+          
+        </div>
+        <div  className="flex justify-center items-center mt-2">
+        <Link to="/signup" className="text-blue-500 hover:underline text-sm">
+              Forget-Password
+            </Link>
+        </div>
+        
         </form>
       </div>
     </div>

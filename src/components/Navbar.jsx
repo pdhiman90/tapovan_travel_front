@@ -295,10 +295,12 @@ import { AuthContext } from '../context/authContext';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import {jwtDecode} from 'jwt-decode';
 
+
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { token, logout } = useContext(AuthContext);
   const [user, setUser] = useState({ firstName: "", lastName: "" });
+  const [loading,setLoading] = useState(false)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -317,8 +319,10 @@ function Navbar() {
   }, [token]);
 
   const handleLogout = () => {
+    setLoading(true);
     logout();
     navigate('/login');
+    setLoading(false);
   };
 
   return (
@@ -334,6 +338,9 @@ function Navbar() {
           <div className="hidden md:flex gap-4 items-center">
            <Link to="/" className="text-white hover:text-blue-400 mx-auto">
              Home
+            </Link> 
+            <Link to="/contact" className="text-white hover:text-blue-400 mx-auto">
+             Contact us
             </Link> 
             {token && (
               <span className="text-white mr-2">
@@ -355,7 +362,13 @@ function Navbar() {
                 onClick={handleLogout}
                 className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
               >
-                Logout
+                {loading ? (
+                  <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="4" />
+                  </svg>
+                ) : (
+                  'Logout'
+                )}
               </button>
             )}
           </div>
@@ -372,8 +385,8 @@ function Navbar() {
 
         {isMenuOpen && (
           <div className="md:hidden mt-4 space-y-2">
-            <Link to="/" className="block text-white py-2 px-4 hover:text-blue-400">Home</Link>
-
+            <Link to="/" className="block text-white py-2 px-4 hover:text-blue-400" onClick={() => setIsMenuOpen(!isMenuOpen)}>Home</Link>
+            <Link to="/contact" className="block text-white py-2 px-4 hover:text-blue-400" onClick={() => setIsMenuOpen(!isMenuOpen)}>Contact us</Link>
             {token && (
               <div className="block text-white py-2 px-4">
                 Welcome, {user.firstName} {user.lastName}
@@ -405,7 +418,13 @@ function Navbar() {
                 }}
                 className="block bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 w-full text-left"
               >
-                Logout
+                  {loading ? (
+                  <svg className="animate-spin h-5 w-5 mr-2" viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="4" />
+                  </svg>
+                ) : (
+                  'Logout'
+                )}
               </button>
             )}
           </div>

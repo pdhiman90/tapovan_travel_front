@@ -8,7 +8,14 @@ function Home() {
     const bookingRef = useRef(null);
 
     const handleScrollToBooking = () => {
-       navigate('/signup')
+        const token = localStorage.getItem("token")
+        if(!token){
+            navigate('/signup')
+        }
+        else{
+            navigate('/bookingcard')
+        }
+       
     };
   return (
     <div className="min-h-screen bg-white">

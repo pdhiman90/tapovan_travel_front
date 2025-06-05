@@ -348,6 +348,7 @@ import React, { useState, useContext } from 'react';
 import auth from '../../Services/auth';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext'; // ✅ Import context
+import {Link} from 'react-router-dom'
 
 const SignUp = () => {
   const [FirstName, setFirstName] = useState('');
@@ -562,7 +563,17 @@ const SignUp = () => {
             'Sign Up'
           )}
         </button>
+        <div className="flex justify-center items-center mt-2">
+          <p className="text-sm">
+            Already have an account?{' '}
+            <Link to="/login" className="text-blue-500 hover:underline">
+              Log In
+            </Link>
+          </p>
+        
+        </div>
       </form>
+
     </div>
   );
 };
