@@ -391,7 +391,8 @@ function Payment() {
   const [paymentStatus, setPaymentStatus] = useState("");
   const [showPaymentLink, setShowPaymentLink] = useState(false);
 
-  const paymentLink = `upi://pay?pa=9991624086@ibl&pn=Punjab%20National%20Bank&am=1500&cu=INR&tn=Seat%20Booking%20Payment`;
+  const paymentLink = 'intent://pay?pa=9991624086@ibl&pn=PAWAN%20KUMAR&am=1500&cu=INR&tn=Booking#Intent;scheme=upi;package=com.google.android.apps.nbu.paisa.user;end;'
+  // `upi://pay?pa=9991624086@ibl&pn=Punjab%20National%20Bank&am=1500&cu=INR&tn=Seat%20Booking%20Payment`;
 
   const handleCopyUPI = () => {
     navigator.clipboard.writeText("9991624086@ibl");
