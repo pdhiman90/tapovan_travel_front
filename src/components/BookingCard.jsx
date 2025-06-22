@@ -2,6 +2,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import  {createPaymentdb}  from "../../Services/payment.js";
+import {jwtDecode} from "jwt-decode";
 
 function BookingCard() {
   const navigate = useNavigate();
@@ -31,6 +33,24 @@ function BookingCard() {
         navigate('/payment')     
     }else{
         navigate('/login')
+    }
+  }
+
+  const createPayment= async()=>{
+    try {
+      const token =  localStorage.getItem("token")
+      const decoded =  jwtDecode(token);
+      const payload = {
+         name : decoded.FirstName + " " + decoded.LastName,
+         mobile : decoded.Mobile
+      }
+      const response = await createPaymentdb(payload);
+      localStorage.setItem("paymentId",response.paymentId);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      throw error;
+      
     }
   }
 
@@ -362,10 +382,11 @@ function BookingCard() {
                 </button>
                 <button
                   className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                  onClick={() => {
+                  onClick={async () => {
                     // Add booking logic here
                     setIsBookingModalOpen(false);
-                    checkUserLogin()
+                    checkUserLogin();
+                    await createPayment();
                   }}
                 >
                   Proceed to Pay
