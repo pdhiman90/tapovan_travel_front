@@ -386,8 +386,9 @@
 import React, { useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { updatePaymentStatus } from "../../Services/payment.js"; // adjust if path differs
-
+import { useNavigate } from "react-router-dom";
 function Payment() {
+  const navigate = useNavigate();
   const [paymentStatus, setPaymentStatus] = useState("");
   const [showPaymentLink, setShowPaymentLink] = useState(false);
 
@@ -405,6 +406,7 @@ function Payment() {
   const handleStatusChange = async (newStatus) => {
     const updatedStatus = paymentStatus === newStatus ? "" : newStatus;
     setPaymentStatus(updatedStatus);
+    navigate("/successpayment");
 
     if (updatedStatus) {
       try {
@@ -554,6 +556,9 @@ function Payment() {
             <li>2. Scan the QR code above or click the payment link</li>
             <li>3. Amount ₹1,500 will be prefilled</li>
             <li>4. Complete the payment</li>
+            <li>5. Update the payment status by checking the checkboxes</li>
+            <li>6. If payment is successful, the payment status will be updated to success</li>
+            <li>7. If payment is failed, the payment status will be updated to failed</li>
           </ol>
         </div>
       </div>

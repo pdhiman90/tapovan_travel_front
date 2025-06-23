@@ -10,6 +10,7 @@ import BookingCard from './components/BookingCard'
 import Footer from './components/Footer'
 import ContactUs from './components/ContactUs';
 import Payment from "./components/Payment"
+import SuccessPayment from "./components/SuccessPayment"
 function App() {
   const token = localStorage.getItem("token")
   return (
@@ -26,6 +27,7 @@ function App() {
          <Route path="/Home" element={<Home />} />
          <Route path='/contact' element={<ContactUs/>}/>
          <Route path='payment' element={<Payment/>}/>
+         <Route path='successpayment' element={<SuccessPayment/>}/>
 
 
       </Routes>

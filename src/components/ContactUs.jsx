@@ -90,7 +90,7 @@ function ContactUs() {
               </span>
             </div>
             <div className="w-full md:w-2/3">
-              <span className="font-roboto">Prince Kumar</span>
+              <span className="font-roboto">Pawan Kumar</span>
             </div>
           </div>
     
@@ -123,7 +123,7 @@ function ContactUs() {
                 className="text-[#007bff] hover:text-[#0056b3] font-roboto"
               >
                 <i className="fas fa-phone mr-2"></i>
-                9050778372
+                9306363805
               </a>
             </div>
           </div>
@@ -140,7 +140,7 @@ function ContactUs() {
                 className="text-[#007bff] hover:text-[#0056b3] font-roboto"
               >
                 <i className="fas fa-envelope mr-2"></i>
-                princedhiman73573@gmail.com
+                pawan.kumar@tapovantravels.com
               </a>
             </div>
           </div>
